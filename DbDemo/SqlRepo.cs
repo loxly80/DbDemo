@@ -25,7 +25,7 @@ namespace DbDemo
             while (reader.Read())
             {
               //načtení hodnot do pole řetězců
-              Item item = new Item(Convert.ToInt32(reader[0]), reader[1].ToString() ?? "", reader[2].ToString() ?? "", reader[3].ToString() ?? "" );
+              Item item = new Item(Convert.ToInt32(reader[0]), reader[1].ToString() ?? "", reader[2].ToString() ?? "", reader[3].ToString() ?? "");
               data.Add(item);
             }
           }
@@ -62,13 +62,13 @@ namespace DbDemo
 
     public void DeleteItem(string id)
     {
-      using(SqlConnection connection = new SqlConnection(connectionString))
+      using (SqlConnection connection = new SqlConnection(connectionString))
       {
         connection.Open();
         using (SqlCommand command = connection.CreateCommand())
         {
           command.CommandText = $"delete from Demo where IdDemo={id}";
-          command.ExecuteNonQuery();          
+          command.ExecuteNonQuery();
         }
         connection.Close();
       }
